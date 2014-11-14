@@ -17,7 +17,7 @@ chrome.extension.sendMessage({}, function(response) {
 		}).on('mouseleave', function(){
 			clearTimeout(setTimeOut);
 			clearData();
-		});;
+		});
 
 		$('body').on('click', function(){
 			clearData();
