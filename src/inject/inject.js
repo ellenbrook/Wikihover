@@ -3,14 +3,19 @@ chrome.extension.sendMessage({}, function(response) {
 	if (document.readyState === "complete") {
 		clearInterval(readyStateCheckInterval);
 
+		var setTimeOut;
 		$('#bodyContent a').on('mouseenter', function(event){
+			var obj = $(this);
 
-			if($(this).children('img').length === 0)
-			{
-				performWork($(this));
-			}
+			setTimeOut = setTimeout(function(){
+				if(obj.children('img').length === 0)
+				{
+					performWork(obj, event);
+				}
+			}, 200);
 
 		}).on('mouseleave', function(){
+			clearTimeout(setTimeOut);
 			clearData();
 		});;
 
@@ -24,7 +29,7 @@ chrome.extension.sendMessage({}, function(response) {
 			$(this).attr('title', $(this).attr('data-title'));
 		}
 
-		function performWork(element)
+		function performWork(element, event)
 		{
 			//Clear the data
 			clearData();
