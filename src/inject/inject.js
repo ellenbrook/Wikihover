@@ -10,12 +10,9 @@ chrome.extension.sendMessage({}, function(response) {
 				performWork($(this));
 			}
 
-		});
-
-
-		$('#bodyContent a').on('mouseleave', function(){
+		}).on('mouseleave', function(){
 			clearData();
-		});
+		});;
 
 		$('body').on('click', function(){
 			clearData();
