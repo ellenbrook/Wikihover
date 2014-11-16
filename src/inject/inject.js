@@ -4,7 +4,9 @@ chrome.extension.sendMessage({}, function(response) {
 		clearInterval(readyStateCheckInterval);
 
 		var setTimeOut;
-		$('#bodyContent a').on('mouseenter', function(event){
+		$element = $('#bodyContent a');
+
+		$element.on('mouseenter', function(event){
 			var obj = $(this);
 
 			setTimeOut = setTimeout(function(){
@@ -38,9 +40,7 @@ chrome.extension.sendMessage({}, function(response) {
 
 			var baseURL = window.location.origin, //Get the URL
 			    url     = element.attr('href'), //Get the href of the link
-			    fullURL = baseURL+url, //Combine those two together to get the link
-			    x = event.pageX, // Get x position of mouse
-			    y = event.pageY; // get right position of mouse
+			    fullURL = baseURL+url; //Combine those two together to get the link
 
 			$.get(fullURL, function(data) {
 			    var content = $(data).find('#bodyContent').find('p').html(),
