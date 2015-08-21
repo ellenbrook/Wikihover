@@ -1,6 +1,6 @@
 {
   "name": "Wikihover",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "manifest_version": 2,
   "description": "A Chrome extension that allows you get the summary of an article with the hover of your mouse.",
   "homepage_url": "http://ellenbrook.github.io",
@@ -12,13 +12,17 @@
   "default_locale": "en",
   "permissions": [
     "http://wikipedia.org/*",
-    "http://en.wikipedia.org/*"
+    "https://wikipedia.org/*",
+    "http://en.wikipedia.org/*",
+    "https://en.wikipedia.org/*"
   ],
   "content_scripts": [
     {
       "matches": [
         "http://wikipedia.org/*",
-        "http://*.wikipedia.org/*"
+        "https://wikipedia.org/*",
+        "http://*.wikipedia.org/*",
+        "https://*.wikipedia.org/*"
       ],
       "js": [
         "js/jquery/jquery.js",
