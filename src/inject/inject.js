@@ -35,7 +35,7 @@ chrome.extension.sendMessage({}, function(response) {
 		{
 			//Clear the data
 			clearData();
-			//Remove the title attribute    
+			//Remove the title attribute
 			element.removeAttr('title');
 
 			var baseURL = window.location.origin, //Get the URL
@@ -45,18 +45,27 @@ chrome.extension.sendMessage({}, function(response) {
 			$.get(fullURL, function(data) {
 			    var content = $(data).find('#bodyContent').find('p').html(),
 			        cssRules = {
-			        	position: 'fixed', 
-			        	top: 10+"px", 
-			        	left: 10+"px", 
+			        	position: 'fixed',
+			        	top: 10+"px",
+			        	left: 10+"px",
 			        	right: 10+"px",
 			        	maxHeight: 500+"px",
-			        	padding: 1.4+"em",
 			        	background: "#fff",
 			        	boxShadow: "2px 2px 15px rgba(50,50,50,.75)",
 			        	zIndex: 100
 			        };
-
-			    $('<div id="popup-notification">'+content+'</div>').css(cssRules).appendTo('body').fadeIn();
+			    var picture = $(data).find('.infobox').find('img').attr('src');
+			    var new_html = '';
+			    	new_html += '<div id="popup-notification" style="display: flex; flex-wrap: wrap;">';
+			    	new_html += '<div style="width: calc(60% - 10px); margin-top: 10px; margin-bottom: 10px; padding-left: 10px;">';
+			    	new_html += content;
+			    	new_html += '</div>';
+			    	new_html += '<div style="background-image: url(';
+			    	new_html += picture;
+			    	new_html += '); background-size: contain; background-position: left; background-repeat: no-repeat; width: calc(40% - 10px);">';
+			    	new_html += '</div>';
+			    	new_html += '</div>';
+			    $(new_html).css(cssRules).appendTo('body').fadeIn();
 			});
 		}
 	}
