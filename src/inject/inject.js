@@ -56,13 +56,13 @@ chrome.extension.sendMessage({}, function(response) {
 			        };
 			    var picture = $(data).find('.infobox').find('img').attr('src');
 			    var new_html = '';
-			    	new_html += '<div id="popup-notification" style="display: flex; flex-wrap: wrap;">';
-			    	new_html += '<div style="width: calc(60% - 10px); margin-top: 10px; margin-bottom: 10px; padding-left: 10px;">';
+			    	new_html += '<div id="popup-notification" style="display: flex;">';
+			    	new_html += '<div style="margin-top: 10px; margin-bottom: 10px; padding-left: 10px;">';
 			    	new_html += content;
 			    	new_html += '</div>';
-			    	new_html += '<div style="background-image: url(';
+			    	new_html += '<img src=';
 			    	new_html += picture;
-			    	new_html += '); background-size: contain; background-position: left; background-repeat: no-repeat; width: calc(40% - 10px);">';
+			    	new_html += ' style="width: auto; max-height: 500px; margin: 0px; padding: 0px; margin-right: 10px;">';
 			    	new_html += '</div>';
 			    	new_html += '</div>';
 			    $(new_html).css(cssRules).appendTo('body').fadeIn();
