@@ -55,17 +55,23 @@ chrome.extension.sendMessage({}, function(response) {
 			        	zIndex: 100
 			        };
 			    var picture = $(data).find('.infobox').find('img').attr('src');
-			    var new_html = '';
-			    	new_html += '<div id="popup-notification" style="display: flex;">';
-			    	new_html += '<div style="margin-top: 10px; margin-bottom: 10px; padding-left: 10px;">';
-			    	new_html += content;
-			    	new_html += '</div>';
-			    	new_html += '<img src=';
-			    	new_html += picture;
-			    	new_html += ' style="width: auto; max-height: 500px; margin: 0px; padding: 0px; margin-right: 10px;">';
-			    	new_html += '</div>';
-			    	new_html += '</div>';
-			    $(new_html).css(cssRules).appendTo('body').fadeIn();
+			    if (picture.attr('src') !== undefined) {
+			    	var new_html = '';
+			    		new_html += '<div id="popup-notification" style="display: flex;">';
+			    		new_html += '<div style="margin-top: 10px; margin-bottom: 10px; padding-left: 10px; align-self: center;">';
+			    		new_html += content;
+			    		new_html += '</div>';
+			    		new_html += '<img src=';
+			    		new_html += picture;
+			    		new_html += ' style="width: auto; max-height: 500px; margin: 0px; padding: 0px; margin-right: 10px;">';
+			    		new_html += '</div>';
+			    		new_html += '</div>';
+			    	$(new_html).css(cssRules).appendTo('body').fadeIn();
+			    }
+			    else {
+			    	$('<div id="popup-notification" style="padding: 10px;">'+content+'</div>').css(cssRules).appendTo('body').fadeIn();
+			    }
+
 			});
 		}
 	}
