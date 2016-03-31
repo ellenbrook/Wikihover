@@ -54,9 +54,11 @@ chrome.extension.sendMessage({}, function(response) {
 			        	boxShadow: "2px 2px 15px rgba(50,50,50,.75)",
 			        	zIndex: 100
 			        };
+			    // Select article pictures that are taller than 100px
 			    var picture = $(data).find('#bodyContent').find('img').filter(function(index) {
 			    	return $(this).attr('height') > 100;
 			    });
+			    // Display popup with picture
 			    if (picture.attr('src') !== undefined) {
 			    	var new_html = '';
 			    		new_html += '<div id="popup-notification" style="display: flex;">';
@@ -70,6 +72,7 @@ chrome.extension.sendMessage({}, function(response) {
 			    		new_html += '</div>';
 			    	$(new_html).css(cssRules).appendTo('body').fadeIn();
 			    }
+			    // If no picture exists, display text-only popup
 			    else {
 			    	$('<div id="popup-notification" style="padding: 10px;">'+content+'</div>').css(cssRules).appendTo('body').fadeIn();
 			    }
